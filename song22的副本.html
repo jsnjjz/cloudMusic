@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		.wrap {
+			width: 1000px;
+			margin: 50px auto 0;
+		}
+		#ul {
+			font-size: 0;
+		}
+		#ul li {
+			position: relative;
+			list-style: none;
+			display: inline-block;
+			width: 200px;
+		}
+		#ul li p{
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100%;
+			background: yellowgreen;
+			color: #000;
+			font-size: 16px;
+		}
+		#ul li img {
+			width: 100%;
+		}
+		#testVideo {
+			background: yellowgreen;
+		}
+	</style>
+	<script src="ajax-jquery.js"></script>
+	<script>
+		window.onload = function(){
+			var oBtn = document.getElementById("btn");
+			var oTxt = document.getElementById("txt");
+			var oUl = document.getElementById("ul");
+			var oVideo = document.getElementById("testVideo");
+			var oImg = null;
+			var oView1 = document.getElementById("view1");
+			var oView2 = document.getElementById("view2");
+			var oView3 = document.getElementById("view3");
+			var oView4 = document.getElementById("view4");
+			oBtn.onclick = function () {
+				if(oTxt.value == ""){
+					alert("空！！！");
+					return false;
+				}
+				ajax({
+						type: "get",
+						url: 'https://api.imjad.cn/cloudmusic/?type=search&limit=100&s='+oTxt.value,
+						asyn: true,
+						success: function (data){
+							news(data);
+						}
+					})
+			}
+			
+			function news(data){
+						oUl.innerHTML = "";
+					for(var i=0; i<data.result.songs.length; i++){
+						var oLi = document.createElement("li");
+						var oImg = document.createElement("img");
+						oImg.setAttribute('src',data.result.songs[i].al.picUrl);
+						oImg.setAttribute('data-id',data.result.songs[i].mv);
+						var oP = document.createElement("p");
+						oP.innerHTML = data.result.songs[i].name;
+						oLi.appendChild(oImg);
+						oLi.appendChild(oP);
+						oUl.appendChild(oLi);
+						}
+					}
+
+//			oUl.onclick = function (ev){
+//				var oEvent = ev||window.event;
+//				var target = oEvent.target||oEvent.srcElement;
+//				if(target.nodeName.toLowerCase() == "img"){
+//					
+//					ajax({
+//						type: "get",
+//						url: 'https://api.imjad.cn/cloudmusic/?type=song&id='+target.getAttribute("data-id")+"&br=128000",
+//						asyn: true,
+//						success: function (data){
+//							oAudio.setAttribute('src',data.data[0].url);		
+//						}
+//					})
+//					
+//				}
+//			}
+			
+			
+			oUl.onclick = function (ev){
+				var oEvent = ev||window.event;
+				var target = oEvent.target||oEvent.srcElement;
+				
+				if(target.getAttribute("data-id") == 0){
+								alert("没有mv！");
+								return false;
+						}
+				if(target.nodeName.toLowerCase() == "img"){
+					ajax({
+						type: "get",
+						url: 'https://api.imjad.cn/cloudmusic/?type=mv&id='+target.getAttribute("data-id"),
+						asyn: true,
+						success: function (data){
+									oVideo.setAttribute('src',data.data.brs["240"]);
+									oView1.onclick = function (){
+										oVideo.setAttribute('src',data.data.brs["240"]);
+									}
+									oView2.onclick = function (){
+										if(data.data.brs["480"]){
+										oVideo.setAttribute('src',data.data.brs["480"]);
+										}else{
+											alert("没有此视频源！")
+											oVideo.setAttribute('src',data.data.brs["240"]);
+										}
+									}
+									oView3.onclick = function (){
+										if(data.data.brs["720"]){
+											oVideo.setAttribute('src',data.data.brs["720"]);
+										}else{
+											alert("没有此视频源！")
+											oVideo.setAttribute('src',data.data.brs["240"]);
+										}
+									}
+									oView4.onclick = function (){
+										if(data.data.brs["1080"]){
+											oVideo.setAttribute('src',data.data.brs["1080"]);
+										}else{
+											alert("没有此视频源！")
+											oVideo.setAttribute('src',data.data.brs["240"]);
+										}
+
+									}
+						}
+					})
+					
+				}
+			}
+			
+				
+				
+		
+		}
+	</script>
+</head>
+<body>
+	<div id="box" class="wrap">
+		<div id="cen">
+			<input type="text" id="txt">
+			<input type="button" value="search" id="btn">
+		</div>
+	
+<!--
+	 <div style="background-color:hotpink;width:1000px;height:320px;">   
+		 <div style="margin-left:20%;">   
+			<section>  
+				<article>  
+					<video style="float:left;" id="testVideo" preload="metadata"  height="300"  controls>  
+					</video>  
+				</article>   
+			 </section>
+			</div>  
+		</div> 
+-->
+		<embed height="348",width="550",class="player",allowFullScreenInteractive="true",pluginspage="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash",AllowScriptAccess="always",rel="noreferrer",flashvars="vid=5389753&ref=http://www.acfun.cn/v/ac3835340",src="http://cdn.aixifan.com/player/ACFlashPlayer.out.swf?vid=5389753&ref=http://www.acfun.cn/v/ac3835340",type="application/x-shockwave-flash",allowfullscreen="true",quality="high",wmode="window"></embed>
+		
+		
+		
+		
+<!--
+		<embed 			height="348",width="550",class="player",allowFullScreenInteractive="true",pluginspage="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash",AllowScriptAccess="always",rel="noreferrer",flashvars="vid=5376882&ref=http://www.acfun.cn/v/ac3827492",type="application/x-shockwave-flash",allowfullscreen="true",quality="high",wmode="window" id="testVideo">
+			
+		</embed>
+-->
+		
+
+		<br>
+		<button id="view1">240p</button>
+		<button id="view2">480p</button>
+		<button id="view3">720p</button>
+		<button id="view4">1080p</button>
+		<ul id="ul">
+		</ul>
+	</div>
+</body>
+</html>

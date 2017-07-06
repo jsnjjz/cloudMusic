@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		html,body {
+			height: 100%;
+			width: 100%;
+		}
+			.clearfix {
+			*zoom: 1;
+		}
+		.clearfix:after,.clearfix:before {
+			display: table;
+			content: "";
+		}
+		.clearfix:after {
+			clear: both;
+		}
+		#wrapSong {
+/*			background: yellowgreen;*/
+			width: 69.44444444%;
+			margin: 0 auto;
+/*			overflow: hidden;*/
+			
+		}
+		#search {
+			margin-top: 80px;
+		}
+		
+		#box {
+			position: relative;
+		}
+		
+		#box .cen {
+			float: left;
+			padding: 5px;
+			list-style: none;
+		}
+		
+		#box .cen img {
+			width: 200px;
+			height: auto;
+		}
+		
+		.pic-box {
+			padding: 5px;
+			border: 1px solid #ccc;
+			box-shadow: 0 0 5px #ccc;
+			border-radius: 5px;
+		}
+		.pic-box p {
+			width: 200px;
+			text-align: center;
+		}
+		
+		
+		/*   列表样式  end  */
+		
+		.head-box {
+			margin-left: 20%;
+		}
+		#inpSong {
+			width: 220px;
+			height: 32px;
+			vertical-align: middle;
+			background: #fff;
+			outline: none;
+		}
+		#btnSong {
+			display: inline-block;
+			width: 92px;
+			height: 32px;
+			vertical-align: middle;
+			text-align: center;
+			line-height: 34px;
+			border-radius: 5px;
+			background: #169bd5;
+			font-size: 20px;
+		}
+		#songInfo {
+			position: relative;
+			margin-top: 30px;
+			margin-bottom: 36px;
+			width: 520px;
+			height: 240px;
+			background: #d7d7d7;
+		}
+		#songInfo img {
+			float: left;
+			width: 170px;
+			height: 170px;
+			border: 2px solid #000;
+			border-radius: 250px;
+			margin: 34px 24px;
+		}
+		#songInfo div {
+			float: left;
+			margin-top: 60px;
+		}
+		#songInfo div p {
+			width: 280px;
+			font-size: 20px;
+			line-height: 32px;
+		}
+		#audio {
+			position: absolute;
+			bottom: 20px;
+			right: 20px;
+		}
+		@keyframes ringDown{
+			0%{
+				transform: rotate(0);
+			}
+			100%{
+				transform: rotate(360deg);
+			}
+		}
+	</style>
+	<script src="ajax-jquery.js"></script>
+	<script src="cloudMusicSong.js" charset="UTF-8"></script>
+</head>
+<body>
+	<div id="wrapSong">
+		<div class="head-box">
+			<form id="search" action="">
+				<input id="inpSong" type="text" placeholder="请输入">
+				<input id="btnSong" type="button" value="SONG">
+			</form>
+			<div id="songInfo" class="clearfix">
+				<img id="round-pic" src="music-pic.png" alt="">
+				<div>
+					<p>歌曲：<span id="span1"></span></p>
+					<p>歌手：<span id="span2"></span></p>
+					<p>专辑：<span id="span3"></span></p>
+				</div>
+				<audio id="audio" controls  autoplay></audio>
+			</div>
+		</div>
+		<h3 style="margin-bottom:30px">相关歌曲：</h3>
+		<ul id="box" class="clearfix">
+			<li class="cen">
+				<div class="pic-box">
+					<img src="images/1.jpg" alt="">
+					<p>歌曲名歌曲名</p>
+				</div>
+			</li>
+			<li class="cen">
+				<div class="pic-box">
+					<img src="images/2.jpg" alt="">
+					<p>歌曲名歌曲名</p>
+				</div>
+			</li>
+			<li class="cen">
+				<div class="pic-box">
+					<img src="images/3.jpg" alt="">
+					<p>歌曲名歌曲名</p>
+				</div>
+			</li>
+			<li class="cen">
+				<div class="pic-box">
+					<img src="images/4.jpg" alt="">
+					<p>歌曲名歌曲名</p>
+				</div>
+			</li>
+			<li class="cen">
+				<div class="pic-box">
+					<img src="images/5.jpg" alt="">
+				</div>
+			</li>
+			<li class="cen">
+				<div class="pic-box">
+					<img src="images/6.jpg" alt="">
+				</div>
+			</li>
+			<li class="cen">
+				<div class="pic-box">
+					<img src="images/7.jpg" alt="">
+				</div>
+			</li>
+			<li class="cen">
+				<div class="pic-box">
+					<img src="images/8.jpg" alt="">
+				</div>
+			</li>
+			<li class="cen">
+				<div class="pic-box">
+					<img src="images/9.jpg" alt="">
+				</div>
+			</li>
+			<li class="cen">
+				<div class="pic-box">
+					<img src="images/10.jpg" alt="">
+				</div>
+			</li>
+			<li class="cen">
+				<div class="pic-box">
+					<img src="images/8.jpg" alt="">
+				</div>
+			</li>
+			<li class="cen">
+				<div class="pic-box">
+					<img src="images/9.jpg" alt="">
+					<p>歌曲名歌曲名</p>
+				</div>
+			</li>
+			<li class="cen">
+				<div class="pic-box">
+					<img src="images/10.jpg" alt="">
+					<p>歌曲名歌曲名</p>
+				</div>
+			</li>
+			<li class="cen">
+				<div class="pic-box">
+					<img src="images/8.jpg" alt="">
+					<p>歌曲名歌曲名即可好了就看见了</p>
+				</div>
+			</li>
+			<li class="cen">
+				<div class="pic-box">
+					<img src="images/9.jpg" alt="">
+					<p>歌曲名歌曲名</p>
+				</div>
+			</li>
+			<li class="cen">
+				<div class="pic-box">
+					<img src="images/10.jpg" alt="">
+					<p>歌曲名歌曲名</p>
+				</div>
+			</li>
+			<li class="cen">
+				<div class="pic-box">
+					<img src="images/8.jpg" alt="">
+					<p>歌曲名歌曲名即可好了就看见了</p>
+				</div>
+			</li>
+			<li class="cen">
+				<div class="pic-box">
+					<img src="images/9.jpg" alt="">
+					<p>歌曲名歌曲名</p>
+				</div>
+			</li>
+			<li class="cen">
+				<div class="pic-box">
+					<img src="images/10.jpg" alt="">
+					<p>歌曲名歌曲名</p>
+				</div>
+			</li>
+			<li class="cen">
+				<div class="pic-box">
+					<img src="images/8.jpg" alt="">
+					<p>歌曲名歌曲名即可好了就看见了</p>
+				</div>
+			</li>
+			<li class="cen">
+				<div class="pic-box">
+					<img src="images/9.jpg" alt="">
+					<p>歌曲名歌曲名</p>
+				</div>
+			</li>
+			<li class="cen">
+				<div class="pic-box">
+					<img src="images/10.jpg" alt="">
+					<p>歌曲名歌曲名</p>
+				</div>
+			</li>
+			<li class="cen">
+				<div class="pic-box">
+					<img src="images/8.jpg" alt="">
+					<p>歌曲名歌曲名即可好了就看见了</p>
+				</div>
+			</li>
+			<li class="cen">
+				<div class="pic-box">
+					<img src="images/9.jpg" alt="">
+					<p>歌曲名歌曲名</p>
+				</div>
+			</li>
+			<li class="cen">
+				<div class="pic-box">
+					<img src="images/10.jpg" alt="">
+					<p>歌曲名歌曲名</p>
+				</div>
+			</li>
+		</ul>
+	</div>
+	
+</body>
+</html>

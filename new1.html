@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		.clearfix: {
+			*zoom: 1;
+		}
+		.clearfix:after,.clearfix:before {
+			content: "";
+			display: table;
+		}
+		.clearfix:after {
+			clear: both;
+		}
+		#box {
+			position: relative;
+		}
+		#box li {
+			float: left;
+			padding: 5px;
+			list-style: none;
+		}
+		#box li .pic_box {
+			padding: 5px;
+			border: 1px solid #ccc;
+			box-shadow: 0 0 5px #ccc;
+			border-radius: 5px;
+		}
+		#box .pic_box img {
+			width: 200px;
+			height: auto;
+		}
+		
+		
+		.btn-box {
+			margin-top: 100px;
+		}
+		#txt {
+			margin-left: 200px;
+			width: 200px;
+			height: 30px;
+		}
+		#btn {
+			width: 60px;
+			height: 30px;
+			background: yellowgreen;
+		}
+	</style>
+	<script src="ajax-jquery.js"></script>
+	<script src="new1.js"></script>
+</head>
+<body>
+
+	<div id="wrap">
+		<div class="btn-box">
+			<input type="text" id="txt" placeholder="mv、song、歌手">
+			<input type="submit" value="search" id="btn">
+			<br>
+			<video id="video" controls  autoplay></video>
+			<br>
+			<button id="view1">240p</button>
+			<button id="view2">480p</button>
+			<button id="view3">720p</button>
+			<button id="view4">1080p</button>
+		</div>
+	</div>
+
+
+	<ul id="box" class="clearfix">
+		<li class="cen">
+			<div class="pic_box">
+				<img src="images/1.jpg" alt="">
+			</div>
+		</li>
+		<li class="cen">
+			<div class="pic_box">
+				<img src="images/2.jpg" alt="">
+			</div>
+		</li>
+		<li class="cen">
+			<div class="pic_box">
+				<img src="images/3.jpg" alt="">
+			</div>
+		</li>
+		<li class="cen">
+			<div class="pic_box">
+				<img src="images/4.jpg" alt="">
+			</div>
+		</li>
+		<li class="cen">
+			<div class="pic_box">
+				<img src="images/5.jpg" alt="">
+			</div>
+		</li>
+		<li class="cen">
+			<div class="pic_box">
+				<img src="images/6.jpg" alt="">
+			</div>
+		</li>
+		<li class="cen">
+			<div class="pic_box">
+				<img src="images/7.jpg" alt="">
+			</div>
+		</li>
+		<li class="cen">
+			<div class="pic_box">
+				<img src="images/8.jpg" alt="">
+			</div>
+		</li>
+		<li class="cen">
+			<div class="pic_box">
+				<img src="images/9.jpg" alt="">
+			</div>
+		</li>
+		<li class="cen">
+			<div class="pic_box">
+				<img src="images/10.jpg" alt="">
+			</div>
+		</li>
+	</ul>
+</body>
+</html>

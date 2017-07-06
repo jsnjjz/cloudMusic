@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="swiper-3.4.2.min.css">
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+		.clearfix {
+			*zoom: 1;
+		}
+		.clearfix:after,.clearfix:before {
+			display: table;
+			content: "";
+		}
+		.clearfix:after {
+			clear: both;
+		}
+		a {
+			color: #000;
+			text-decoration: none;
+		}
+		.wrap {
+			width: 1000px;
+			margin: 0 auto;
+		}
+		.header {
+			height: 140px;
+			overflow: hidden;
+		}
+		#search {
+			margin-top: 80px;
+		}
+		#indexTXt {
+			width: 220px;
+			height: 32px;
+			vertical-align: middle;
+			background: #fff;
+			outline: none;
+		}
+		#song {
+			display: inline-block;
+			width: 92px;
+			height: 32px;
+			vertical-align: middle;
+			text-align: center;
+			line-height: 34px;
+			border-radius: 5px;
+			background: #169bd5;
+			font-size: 20px;
+		}
+		#mv {
+			display: inline-block;
+			width: 92px;
+			height: 32px;
+			vertical-align: middle;
+			text-align: center;
+			line-height: 34px;
+			border-radius: 5px;
+			background: #169bd5;
+			font-size: 20px;
+		}
+		.song-list {
+			margin-top: 30px;
+		}
+		.song-list ul {
+			margin-right: -40px;
+		}
+		.song-list ul li {
+			float: left;
+			width: 230px;
+			margin-top: 20px;
+			margin-right: 30px;
+			text-align: center;
+		}
+		.song-list li img {
+			width: 100%;
+			height: auto;
+		}
+	</style>
+	<script src="jquery-1.10.1.min.js"></script>
+	<script src="swiper-3.4.2.min.js"></script>
+	<script>
+		 $(function (){
+			  var mySwiper = new Swiper ('.swiper-container', {
+				direction: 'horizontal',
+				loop: true,
+				autoplay: 5000,//可选选项，自动滑动
+				// 如果需要分页器
+				pagination: '.swiper-pagination',
+
+				// 如果需要前进后退按钮
+				nextButton: '.swiper-button-next',
+				prevButton: '.swiper-button-prev',
+
+				// 如果需要滚动条
+				scrollbar: '.swiper-scrollbar',
+					keyboardControl : true,
+			}) 
+		 })
+	</script>
+	<script src="ajax-jquery.js"></script>
+	<script src="cloudMusic.js"></script>
+</head>
+<body>
+	<div class="header wrap">
+		<form id="search">
+			<input id="indexTXt" type="text" name="id">
+			<input id="song" type="submit" value="SONG">
+			<input id="mv" type="submit" value="MV">
+		</form>
+	</div>
+	<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="01.png" alt=""></div>
+        <div class="swiper-slide"><img src="02.png" alt=""></div>
+        <div class="swiper-slide"><img src="03.png" alt=""></div>
+        <div class="swiper-slide"><img src="04.png" alt=""></div>
+    </div>
+    <!-- 如果需要分页器 -->
+    <div class="swiper-pagination"></div>
+    
+    <!-- 如果需要导航按钮 -->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+    
+    <!-- 如果需要滚动条 -->
+    <div class="swiper-scrollbar"></div>
+	</div>
+	<div class="song-list wrap">
+		<h3>热门推荐</h3>
+		<div>
+			<ul class="clearfix" id="ul">
+				<li>
+					<img src="music-pic.png" alt="" data-id="29947420">
+					<span>fade</span>
+				</li>
+				<li>
+					<img src="music-pic.png" alt="" data-id="85491">
+					<span>童话</span>
+				</li>
+				<li>
+					<img src="music-pic.png" alt="" data-id="">
+					<span>悟空传</span>
+				</li>
+				<li>
+					<img src="music-pic.png" alt="" data-id="">
+					<span>悟空传</span>
+				</li>
+				<li>
+					<img src="music-pic.png" alt="" data-id="">
+					<span>悟空传</span>
+				</li>
+				<li>
+					<img src="music-pic.png" alt="" data-id="">
+					<span>悟空传</span>
+				</li>
+				<li>
+					<img src="music-pic.png" alt="" data-id="">
+					<span>悟空传</span>
+				</li>
+				<li>
+					<img src="music-pic.png" alt="" data-id="">
+					<span>悟空传</span>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<audio id="audio"  autoplay ></audio>
+</body>
+</html>

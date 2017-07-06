@@ -1,0 +1,66 @@
+<span style="font-size:14px;"><strong><!DOCTYPE html>  
+<html>  
+<head>  
+<meta charset="utf-8"/>  
+        <title>html5 视频</title>  
+    </head>  
+   
+<style type="text/css">  
+li{list-style:none;color:#fff;}  
+   
+a:hover{color:#f00;}   
+  
+li:hover{color:#f00;cursor: pointer;}    
+ </style>  
+    <body>  
+       <div style="background-color:#fff;width:1000px;height:600px;">   
+       <div style="margin-left:20%;">  
+        <header>  
+            <div>  
+                当前播放 ：<a > <!-- id="currentMovie" -->《画江湖之灵主》</a><br>  
+                当前播放速度 ： <span id="currentSpeed">1X</span><br>  
+                当前声音大小为 ：<span id="currentVolume">100</span><br>  
+            </div>  
+        </header>  
+        <section>  
+        <article>  
+            <video style="float:left;"  id="testVideo" preload="metadata" src="/jiami/images/1.mp4" height="300"  controls>  
+                  你的浏览器不支持html5视频  
+            </video>  
+<!--
+            <div style="float:left;background-color:rgb(48,48,48);width:200px;height:317px;overflow:scroll;">  
+                <h4 style="color:rgb(166,166,166);font-weight:bold;width:200px;float:left;"><span>播放列表</span>   <span >集数列表</span></h4>  
+                 <hr>  
+                <ul style="">  
+                    <li>喜洋洋灰太狼</li>  
+                    <li>蜡笔小新</li>  
+                    <li>龙珠</li>  
+                     <li>喜洋洋灰太狼</li>  
+                    <li>蜡笔小新</li>  
+                </ul>  
+            </div>  
+-->
+        </article>  
+        <article style="clear:both;">  
+            <br/>  
+  
+            <button class="btn btn-primary" id="play">播放</button>  
+            <button class="btn btn-primary"  id="pause">暂停</button>  
+            <button class="btn btn-primary"  id="stop">停止</button>  
+            <button class="btn btn-primary"  id="prev">下集</button>  
+            <button class="btn btn-primary"  id="next">上集</button>  
+            <button class="btn btn-primary"  id="upVolume">音量+</button>  
+            <button class="btn btn-primary"  id="downVolume">音量-</button>  
+            <button class="btn btn-primary"  id="fastFoward">快进</button>  
+            <button class="btn btn-primary"  id="fastBackward">快退</button>  
+            <br/>  
+              
+         <!-- 从<input type="text" id="min" style="width:20px;" value="0"/>分跳转到<input type="text" id="sec"  style="width:20px;" value="0"/>播放   
+            <button id="locate">确认</button> -->  
+        </article>  
+        <section>  
+        </div>  
+          </div>  
+       
+    </body>  
+</html></strong></span>  
