@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="font/iconfont.css">
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		body {
+			height: 2000px;
+		}
+		a {
+			display: none;
+			position: fixed;
+			bottom: 50px;
+			right: 50px;
+			text-decoration: none;
+		}
+		.icon-top {
+			font-size: 100px;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			var oBack  = document.getElementById("back");
+			var timer = null;
+			var viewHeight = document.documentElement.clientHeight;
+			window.onscroll = function (){
+				var scrollTop = document.documentElement.scrollTop||document.body.scrollTop;
+				if(scrollTop >= viewHeight){
+					oBack.style.display = "block";
+				}else{
+					oBack.style.display = "none";
+				}
+			}
+			
+			oBack.onclick = function (){
+				timer=setInterval(function (){
+					var scrollTop = document.documentElement.scrollTop||document.body.scrollTop;
+					var speed = scrollTop/5;
+					document.body.scrollTop -= speed;
+					if(scrollTop == 0){
+						clearInterval(timer);
+					}
+				},30)
+			}
+		}
+	</script>
+</head>
+<body>
+	<a herf="javascript:;" class="iconfont icon-top" id="back"></a>
+</body>
+</html>

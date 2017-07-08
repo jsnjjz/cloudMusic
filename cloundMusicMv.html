@@ -23,7 +23,7 @@
 		.clearfix:after {
 			clear: both;
 		}
-		#wrapSong {
+		#wrapMv {
 			width: 69.44444444%;
 			margin: 0 auto;
 		}
@@ -59,18 +59,18 @@
 		
 		
 		/*   列表样式  end  */
-		
-		.head-box {
+		#search {
 			margin-left: 20%;
+			margin-bottom: 20px;
 		}
-		#inpSong {
+		#inpMv {
 			width: 220px;
 			height: 32px;
 			vertical-align: middle;
 			background: #fff;
 			outline: none;
 		}
-		#btnSong {
+		#btnMv {
 			display: inline-block;
 			width: 92px;
 			height: 32px;
@@ -81,43 +81,49 @@
 			background: #169bd5;
 			font-size: 20px;
 		}
-		#songInfo {
+		#MvInfo {
 			position: relative;
-			margin-top: 30px;
-			margin-bottom: 36px;
-			width: 520px;
-			height: 240px;
-			background: #d7d7d7;
+			height: 404px;
+			background: #f8f8f8;
 		}
-		#songInfo img {
-			float: left;
-			width: 170px;
-			height: 170px;
-			border: 2px solid #000;
-			border-radius: 250px;
-			margin: 34px 24px;
+		h3 {
+			margin-top: 20px;
+			margin-bottom: 20px;
 		}
-		#songInfo div {
-			float: left;
-			margin-top: 60px;
+		#video {
+			background: #000;
 		}
-		#songInfo div p {
-			width: 280px;
-			font-size: 20px;
-			line-height: 32px;
-		}
-		#audio {
+		#source {
 			position: absolute;
-			bottom: 20px;
-			right: 20px;
+/*			z-index: 1;*/
+			bottom: 32px;
+			right: 0;
+			width: 60px;
+			background: #fff;
+			text-align: center;
 		}
-		@keyframes ringDown{
-			0%{
-				transform: rotate(0);
-			}
-			100%{
-				transform: rotate(360deg);
-			}
+		#source li {
+			list-style: none;
+			width: 60px;
+			line-height: 28px;
+			font-size: 16px;
+			cursor: pointer;
+		}
+		#source li:hover {
+			background: #ccc;
+		}
+		.video-box {
+			position: absolute;
+			top: 5px;
+			left: 50%;
+			margin-left: -360px;
+			width: 720px;
+			height: 400px;
+			background: yellowgreen;
+		}
+		#video {
+			position: relative;
+			z-index: 1;
 		}
 		#back {
 			display: none;
@@ -127,33 +133,32 @@
 			right: 50px;
 			text-decoration: none;
 			color: #ccc;
+			cursor: pointer;
 		}
 		.icon-top {
 			font-size: 80px;
 		}
 	</style>
 	<script src="ajax-jquery.js"></script>
-	<script src="cloudMusicSong.js" charset="UTF-8"></script>
+	<script src="cloudMusicMv.js"></script>
 </head>
 <body>
-	<div id="wrapSong">
-		<div class="head-box">
-			<form id="search" action="">
-				<input id="inpSong" type="text" placeholder="请输入">
-				<input id="btnSong" type="button" value="SONG">
-			</form>
-			<div id="songInfo" class="clearfix">
-				<img id="round-pic" src="music-pic.png" alt="">
-				<div>
-					<p>歌曲：<span id="span1"></span></p>
-					<p>歌手：<span id="span2"></span></p>
-					<p>专辑：<span id="span3"></span></p>
-				</div>
-				<audio id="audio" controls  autoplay onended="myFunction()"></audio>
-			</div>
-		</div>
+	<div id="wrapMv">
+		<form id="search" action="">
+			<input id="inpMv" type="text" placeholder="请输入">
+			<input id="btnMv" type="button" value="MV">
+		</form>
+		<div id="MvInfo">   
+			<div class="video-box">
+				<video  id="video" preload="metadata"  height="400" 
+				width="720" autoplay controls>
+				</video> 
+				<ul id="source">
+				</ul>
+			</div>  
+		</div> 
 		<i  class="iconfont icon-top" id="back"></i>
-		<h3 style="margin-bottom:30px">相关歌曲：</h3>
+		<h3>相关MV：</h3>
 		<ul id="box" class="clearfix">
 			<li class="cen">
 				<div class="pic-box">
@@ -300,6 +305,5 @@
 			</li>
 		</ul>
 	</div>
-	
 </body>
 </html>

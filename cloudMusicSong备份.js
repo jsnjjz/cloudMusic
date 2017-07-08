@@ -54,7 +54,7 @@ window.onload = function(){
 					})
 
 			var num =0;
-		window.addEventListener("scroll",function (){
+			window.onscroll = function (){
 				if(checkFlag ()){
 					num += 1;
 					ajax({
@@ -66,9 +66,47 @@ window.onload = function(){
 						}
 				})
 			}
-		},false)
+				
+				
+//				if(scrollTop >= viewHeight){
+//					oBack.style.display = "block";
+//				}else{
+//					oBack.style.display = "none";
+//				}
+		}
 	}
-		
+	
+	
+	
+	
+	
+			window.onscroll = function (){
+				var viewHeight1 = document.documentElement.clientHeight||document.body.clientHeight;
+	var scrollTop1 = document.documentElement.scrollTop||document.body.scrollTop;
+				console.log(viewHeight1,scrollTop1);
+				if(scrollTop1 >= viewHeight1){
+					oBack.style.display = "block";
+				}else{
+					oBack.style.display = "none";
+				}
+				
+			}
+			
+			oBack.onclick = function (){
+				timer=setInterval(function (){
+					var scrollTop1 = document.documentElement.scrollTop||document.body.scrollTop;
+					var speed = scrollTop1/5;
+					document.body.scrollTop -= speed;
+					if(scrollTop1 == 0){
+						clearInterval(timer);
+					}
+				},30)
+			}
+	
+	
+	
+	
+	
 	if(loc){
 		 oParent.innerHTML = "";
 		
@@ -135,35 +173,6 @@ window.onload = function(){
 
 	}
 		
-		
-		
-		//回到顶部部分
-		
-		window.addEventListener("scroll",function (){
-				var viewHeight = document.documentElement.clientHeight||document.body.clientHeight;
-	var scrollTop = document.documentElement.scrollTop||document.body.scrollTop;
-				if(scrollTop >= viewHeight){
-					oBack.style.display = "block";
-				}else{
-					oBack.style.display = "none";
-				}
-			},false)
-	
-			oBack.onclick = function (){
-				timer=setInterval(function (){
-					var scrollTop = document.documentElement.scrollTop||document.body.scrollTop;
-					var speed = scrollTop/5;
-					document.body.scrollTop -= speed;
-					if(scrollTop == 0){
-						clearInterval(timer);
-					}
-				},30)
-			}
-			
-			
-		function	myFunction(){
-			alert("谢谢欣赏！")
-		}
 		
 }
 
@@ -259,3 +268,16 @@ function getChildElements (parent,content){
 	}
 	return contentArr;
 }
+
+//$(function (){
+//		$(window).scroll(function (){
+//		if($(this).scrollTop()>300){
+//			$("#back").fadeIn(200);
+//		}else{
+//			$("#back").fadeOut(200);
+//		}
+//	})
+//	$("#back").click(function (){
+//		$("html,body").animate({scrollTop:"0"},1000);
+//	});
+//})

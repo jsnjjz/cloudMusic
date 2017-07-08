@@ -14,55 +14,20 @@
 					alert("空！！！");
 					return false;
 				}													 				 
-				
-//				alert(oIndexTxt.value);
-				oForm.setAttribute("action","file:///Users/jiangzhou/Desktop/%E7%80%91%E5%B8%83%E6%B5%81/cloudMusicSong.html");			
-				
-				
-//				alert(oForm.getAttribute("action"));
-				
-//				alert(oIndexTxt.value);
-//				ajax({
-//					type: "get",
-//					url: 'https://api.imjad.cn/cloudmusic/?type=search&s='+oTxt.value,
-//					asyn: true,
-//					success: function (data){
-//						news(data);
-//					}
-//				})
-				
-				
-				
-				
+				oForm.setAttribute("action","file:///Users/jiangzhou/Desktop/%E4%BA%91%E9%9F%B3%E4%B9%90/cloudMusicSong.html");			
+	
 			}
 			
-//			function news(data){		
-//						var oParent  = document.getElementById("box");
-//					for(var i=0; i<data.result.songs.length; i++){
-//						var oDiv = document.createElement("div");
-//						oDiv.className = "pic-box";
-//						var oLi = document.createElement("li");
-//						oLi.className = "cen";
-//						var oImg = document.createElement("img");			
-//						var oP = document.createElement("p");
-//						oP.innerHTML = data.result.songs[i].name;
-//						oImg.setAttribute('src',data.result.songs[i].al.picUrl);
-//						oImg.setAttribute('data-id',data.result.songs[i].id);
-//						oImg.setAttribute('title',data.result.songs[i].name);
-//						oImg.setAttribute('artist',data.result.songs[i].ar[0].name);
-//						oImg.setAttribute('album',data.result.songs[i].al.name);
-//						oDiv.appendChild(oImg);
-//						oDiv.appendChild(oP);
-//						oLi.appendChild(oDiv);
-//						oParent.appendChild(oLi);
-//					}
-//					imgLocation("box","cen");
-//				}
+			oMv.onclick = function () {
+				if(oIndexTxt.value == ""){
+					alert("空！！！");
+					return false;
+				}													 				 
+				oForm.setAttribute("action","file:///Users/jiangzhou/Desktop/%E4%BA%91%E9%9F%B3%E4%B9%90/cloundMusicMv.html");			
+	
+			}
 			
-		
-		
-		
-		
+
 			oUl.onclick = function (ev){
 				var oEvent = ev||window.event;
 				var target = oEvent.target||oEvent.srcElement;
