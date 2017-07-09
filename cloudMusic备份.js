@@ -26,7 +26,9 @@
 				oForm.setAttribute("action","file:///Users/jiangzhou/Desktop/%E4%BA%91%E9%9F%B3%E4%B9%90/cloundMusicMv.html");			
 	
 			}
-
+			
+			
+			
 
 			oUl.onclick = function (ev){
 				var oEvent = ev||window.event;
@@ -41,25 +43,21 @@
 								oAudio.setAttribute('src',data.data[0].url);		
 							}
 						})
-								 
-//								 target.parentNode.nextElementSibling.children[0]		
-								 
 					}
 				}else{
 						oAudio.pause();
 				}
-
 				
-				oAudio.onended = function (){
-					ajax({
-						type: "get",
-						url: 'https://api.imjad.cn/cloudmusic/?type=song&id='+target.parentNode.nextElementSibling.children[0].getAttribute("data-id")+"&br=128000",
-						asyn: true,
-						success: function (data){
-							oAudio.setAttribute('src',data.data[0].url);		
-						}
-					})
-				}	
+//				setTimeout(function (){
+//					console.log(oAudio.duration);
+//				},1000)
+//				console.log(oAudio.ended);
+//				
+//				
+//				if(oAudio.ended){
+//					alert("结束")
+//				}
+				
 			}
 			
 			
@@ -89,6 +87,14 @@
 
 		}
 	
-	
-	
-	
+	function myFunction(){
+		var oAudio = document.getElementById("audio");
+		var oSrcBox = document.getElementById("srcBox");
+		setTimeout(function (){
+		var  oLi = oSrcBox.children[0];
+			oSrcBox.appendChild(oLi);
+			oAudio.setAttribute('src',oLi.innerHTML);	
+		console.log(oLi.innerHTML);
+		},0)
+			
+	}

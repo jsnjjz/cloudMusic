@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		window.onload = function(){
+			var oUl = document.getElementsByTagName("ul")[0];
+			var oBtn = document.getElementsByTagName("button")[0];
+//		
+//				oBtn.onclick = function (){
+//					
+//				}
+				
+				
+				(function (){
+					setInterval(function (){
+						var oLi = oUl.children[0];
+						oUl.appendChild(oLi);
+					},2000)
+				})()
+
+			
+		}
+	</script>
+</head>
+<body>
+	<button>切换</button>
+	<ul>
+		<li>11111</li>
+		<li>22222</li>
+		<li>33333</li>
+		<li>44444</li>
+		<li>55555</li>
+	</ul>
+</body>
+</html>

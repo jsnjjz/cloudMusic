@@ -26,7 +26,7 @@ window.onload = function(){
 			setTimeout(function (){
 				ajax({
 				type: "get",
-				url: 'https://api.imjad.cn/cloudmusic/?type=search&limit=60&s='+loc,
+				url: 'https://api.imjad.cn/cloudmusic/?type=search&limit=40&s='+loc,
 				asyn: true,
 				success: function (data){
 					news(data);
@@ -46,7 +46,7 @@ window.onload = function(){
 		oParent.innerHTML = "";
 				ajax({
 						type: "get",
-						url: 'https://api.imjad.cn/cloudmusic/?type=search&limit=50&s='+oTxt.value,
+						url: 'https://api.imjad.cn/cloudmusic/?type=search&limit=40&s='+oTxt.value,
 						asyn: true,
 						success: function (data){
 							news(data);
@@ -56,15 +56,18 @@ window.onload = function(){
 			var num =0;
 		window.addEventListener("scroll",function (){
 				if(checkFlag ()){
-					num += 1;
+						num += 1;
+//							console.log(num);
 					ajax({
 						type: "get",
-						url: 'https://api.imjad.cn/cloudmusic/?type=search&limit=30&offset='+num+'&s='+oTxt.value,
+						url: 'https://api.imjad.cn/cloudmusic/?type=search&limit=40&offset='+num+'&s='+oTxt.value,
 						asyn: true,
 						success: function (data){
 							news(data);
+//							console.log(parseInt(data.result.songCount/40));
 						}
 				})
+					
 			}
 		},false)
 	}
@@ -74,7 +77,7 @@ window.onload = function(){
 		
 		ajax({
 				type: "get",
-				url: 'https://api.imjad.cn/cloudmusic/?type=search&limit=60&s='+loc,
+				url: 'https://api.imjad.cn/cloudmusic/?type=search&limit=40&s='+loc,
 				asyn: true,
 				success: function (data){
 					news(data);
@@ -97,9 +100,6 @@ window.onload = function(){
 		}
 	}
 	
-			
-	
-
 		oParent.onclick = function (ev){
 		var oEvent = ev||window.event;
 		var target = oEvent.target||oEvent.srcElement;
@@ -113,25 +113,40 @@ window.onload = function(){
 				}
 			})
 		}
+			
+
 			oRoundPic.setAttribute("src",target.getAttribute("src"));
 			oRoundPic.style.animation = "ringDown 8s linear infinite";
 			oSpan1.innerHTML = target.getAttribute("title");
 			oSpan2.innerHTML = target.getAttribute("artist");
 			oSpan3.innerHTML = target.getAttribute("album");
+						
+			oAudio.onpause = function (){
+				oRoundPic.style.animation = "ringDown 8s linear infinite paused";
+			}
 			
-			setInterval(function (){
-				if(oAudio.paused){
-//						console.log("暂停！！");
-					oRoundPic.style.animation = "ringDown 8s linear infinite paused";
-					}
-			},500)
+			oAudio.onplay = function (){
+				oRoundPic.style.animation = "ringDown 8s linear infinite";
+			}
 			
-			setInterval(function (){
-					if(!oAudio.paused){
-//						console.log("bu暂停！！");
-						oRoundPic.style.animation = "ringDown 8s linear infinite";
+			
+			oAudio.onended = function (){
+					ajax({
+						type: "get",
+						url: 'https://api.imjad.cn/cloudmusic/?type=song&id='+target.parentNode.parentNode.nextElementSibling.children[0].children[0].getAttribute("data-id")+"&br=128000",
+						asyn: true,
+						success: function (data){
+							oAudio.setAttribute('src',data.data[0].url);		
 						}
-				},500)
+					})
+//					console.log(target.parentNode.parentNode.nextElementSibling.children[0].children[0]);
+				oRoundPic.setAttribute("src",target.parentNode.parentNode.nextElementSibling.children[0].children[0].getAttribute("src"));
+					oRoundPic.style.animation = "ringDown 8s linear infinite";
+					oSpan1.innerHTML = target.parentNode.parentNode.nextElementSibling.children[0].children[0].getAttribute("title");
+					oSpan2.innerHTML = target.parentNode.parentNode.nextElementSibling.children[0].children[0].getAttribute("artist");
+					oSpan3.innerHTML = target.parentNode.parentNode.nextElementSibling.children[0].children[0].getAttribute("album");
+
+				}	
 
 	}
 		
@@ -159,15 +174,22 @@ window.onload = function(){
 					}
 				},30)
 			}
-			
-			
-		function	myFunction(){
-			alert("谢谢欣赏！")
-		}
+	}
 		
-}
+
+		
+		
+		
+		
+		
+			
+			
+		
 
 
+//function myFunction(){
+//		alert("结束");
+//	}
 
 // 自定义函数部分
 
@@ -193,6 +215,7 @@ window.onload = function(){
 			oParent.appendChild(oLi);
 		}
 		imgLocation("box","cen");
+//		console.log("总数："+data.result.songCount);
 	}
 
 

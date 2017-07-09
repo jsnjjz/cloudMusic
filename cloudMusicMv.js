@@ -7,6 +7,7 @@ window.onload = function(){
 	var oSource = document.getElementById("source");
 	var timer = null;
 	var set = null;
+	var stay = null;
 	
 	var str = window.location.search;
 	var loc = str.substring(str.lastIndexOf('=')+1, str.length); 
@@ -161,29 +162,55 @@ window.onload = function(){
 		}
 	}
 	
-			
-	
-	
-	
+
 	//视频源切换弹出框
-	oSource.onmouseover = oVideo.onmouseover=function(){
+	
+	oVideo.onplay = function (){
+		
+		oSource.onmouseover=function(){
 			 clearInterval(timer);
+			clearTimeout(stay);
+			oSource.style.display = "block";
 			 timer=setInterval(function(){
-					if(oSource.offsetLeft<720){
-						 oSource.style.left = oSource.offsetLeft+10+'px'; 
+					if(oSource.offsetLeft>660){
+						 oSource.style.left = oSource.offsetLeft-10+'px'; 
 					}
-			},30)
+			},30);
 	}
             
 	 oSource.onmouseout = oVideo.onmouseout=function(){
 				 clearInterval(timer);
 			 timer = setInterval(function(){
-					if(oSource.offsetLeft>660){
-						 oSource.style.left = oSource.offsetLeft-10+'px'; 
+					if(oSource.offsetLeft<720){
+						 oSource.style.left = oSource.offsetLeft+10+'px';
 					}
 			},30)
 	}
 	 
+	 
+	 oVideo.addEventListener("mouseover",function() {
+				clearInterval(timer);
+			 timer=setInterval(function(){
+					if(oSource.offsetLeft>660){
+						 oSource.style.left = oSource.offsetLeft-10+'px'; 
+					}
+			},30);
+	 },false);
+
+	 oVideo.addEventListener("mouseover",function() {
+		  
+			stay = setTimeout(function (){
+				clearInterval(timer);
+						timer = setInterval(function(){
+							if(oSource.offsetLeft<720){
+								 oSource.style.left = oSource.offsetLeft+10+'px';
+							}
+					},30)
+			},3600)
+	 },false);
+
+	}
+	
 	 	//回到顶部部分
 		
 		window.addEventListener("scroll",function (){
